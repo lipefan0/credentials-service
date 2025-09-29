@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: credentials-service
+
+
+  data:
+    mongodb:
+      host: ${MONGO_HOST}
+      port: 27017
+      database: ${MONGO_DB}
+      username: ${MONGO_USER}
+      password: ${MONGO_PASSWORD}
+
+server:
+  port: 8082
