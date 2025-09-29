@@ -1,12 +1,9 @@
 package br.com.upvisibility.credentialsservice.repository
 
 import br.com.upvisibility.credentialsservice.entity.CredentialsEntity
-import org.springframework.data.mongodb.repository.MongoRepository
-import org.springframework.stereotype.Repository
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository
+import reactor.core.publisher.Mono
 
-@Repository
-interface CredentialsRepository: MongoRepository<CredentialsEntity, String> {
-    suspend fun findByUserIdAndServiceName(userId: String, serviceName: String): CredentialsEntity?
-
-    suspend fun findByServiceNameAndExternalId(serviceName: String, externalId: String): CredentialsEntity?
+interface CredentialsRepository : ReactiveMongoRepository<CredentialsEntity, String> {
+    fun findByUserIdAndServiceName(userId: String, serviceName: String): Mono<CredentialsEntity>
 }
