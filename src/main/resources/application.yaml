@@ -10,6 +10,15 @@ bling:
     url: https://api.bling.com.br/Api/v3
     client-id: ${BLING_CLIENT_ID}
     client-secret: ${BLING_CLIENT_SECRET}
+    redirect-uri: ${BLING_REDIRECT_URI:http://localhost:8085/credentials/bling}
+
+api:
+  keys:
+    bling-service: ${BLING_SERVICE_API_KEY}
+    shopify-service: ${SHOPIFY_SERVICE_API_KEY}
 
 server:
-  port: 8082
+  port: 8085
+
+jwt:
+  secret: ${JWT_SECRET:ChaveSecretaSuperSeguraParaAssinarTokensJwtComPeloMenos256BitsDeTamanho}
