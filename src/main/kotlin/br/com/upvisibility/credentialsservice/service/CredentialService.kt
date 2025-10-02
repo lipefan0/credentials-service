@@ -64,4 +64,17 @@ class CredentialService(
 
         return credentialsRepository.save(updatedCredentials).awaitSingle()
     }
+
+    suspend fun userHasBlingCredentials(userId: String): Boolean {
+        val credentials = credentialsRepository
+            .findByUserIdAndServiceName(userId, "bling")
+            .awaitSingleOrNull()
+        return credentials != null
+    }
+
+    suspend fun findCredentialsByExternalId(externalId: String, serviceName: String): CredentialsEntity? {
+        return credentialsRepository
+            .findByExternalIdAndServiceName(externalId, serviceName)
+            .awaitSingleOrNull()
+    }
 }
